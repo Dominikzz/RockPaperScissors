@@ -46,21 +46,21 @@ function Random() {
 // function that compairs players choice and computer choice and outputs a winner
 function compare() {
     if (playersChoice === computersChoice) {
-        gameResult.textContent = "Game Result: Tie" 
+        gameResult.textContent = "Tie!" 
     } else if (playersChoice === rock && computersChoice === paper) {
-        gameResult.textContent = "Game Result: Player lost! Paper beats Rock"
+        gameResult.textContent = "Player lost! Paper beats Rock"
     } else if (playersChoice === paper && computersChoice === rock) {
-        gameResult.textContent = "Game Result: Player Won! Paper beats Rock"
+        gameResult.textContent = "Player Won! Paper beats Rock"
     } else if (playersChoice === scissors && computersChoice === rock) {
-        gameResult.textContent = "Game Result: Player lost! Rock beats Scissors"
+        gameResult.textContent = "Player lost! Rock beats Scissors"
     } else if (playersChoice === rock && computersChoice === scissors) {
-        gameResult.textContent = "Game Result: Player Won! Rock beats Scissors"
+        gameResult.textContent = "Player Won! Rock beats Scissors"
     } else if (playersChoice === scissors && computersChoice === paper) {
-        gameResult.textContent = "Game Result: Player Won! Scissors beats Paper"
+        gameResult.textContent = "Player Won! Scissors beats Paper"
     } else if (playersChoice === paper && computersChoice === scissors) {
-        gameResult.textContent = "Game Result: Player Lost! Scissors beats Paper"
+        gameResult.textContent = "Player Lost! Scissors beats Paper"
     } else if (playersChoice === scissors && computersChoice === paper) {
-        gameResult.textContent = "Game Result: Player Won! Scissors beats Paper"
+        gameResult.textContent = "Player Won! Scissors beats Paper"
     }
 }
 
