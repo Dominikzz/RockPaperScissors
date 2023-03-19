@@ -11,6 +11,9 @@ let computersChoice = ""
 let gameResult = document.getElementById("game-result")
 let pChoice = document.getElementById("p-choice")
 let cChoice = document.getElementById("c-choice")
+// variables that keep track of the winner
+let cWinner = 1
+let pWinner = 1
 // function that gathers the input of players choice
 function Rock() {
     playersChoice = rock
@@ -40,27 +43,51 @@ function Random() {
             computersChoice = scissors
             cChoice.textContent = "Computers Choice: " + scissors
         }
-        console.log(playersChoice)
-    compare()
+    playRound()
 }
-// function that compairs players choice and computer choice and outputs a winner
-function compare() {
+
+// variables for score and round
+let roundCount = document.getElementById("round")
+let pScore = document.getElementById("p-score")
+let cScore = document.getElementById("c-score")
+// variables for player score and computer score and round
+let playerScore = 0
+let computerScore = 0
+let round = 0
+// function that displays the round, score and compares the choices
+function playRound() {
     if (playersChoice === computersChoice) {
         gameResult.textContent = "Tie!" 
     } else if (playersChoice === rock && computersChoice === paper) {
         gameResult.textContent = "Player lost! Paper beats Rock"
+        computerScore += 1
+        cScore.textContent = computerScore
     } else if (playersChoice === paper && computersChoice === rock) {
         gameResult.textContent = "Player Won! Paper beats Rock"
+        playerScore += 1
+        pScore.textContent = playerScore
     } else if (playersChoice === scissors && computersChoice === rock) {
         gameResult.textContent = "Player lost! Rock beats Scissors"
+        computerScore += 1
+        cScore.textContent = computerScore
     } else if (playersChoice === rock && computersChoice === scissors) {
         gameResult.textContent = "Player Won! Rock beats Scissors"
+        playerScore += 1
+        pScore.textContent = playerScore
     } else if (playersChoice === scissors && computersChoice === paper) {
         gameResult.textContent = "Player Won! Scissors beats Paper"
+        playerScore += 1
+        pScore.textContent = playerScore
     } else if (playersChoice === paper && computersChoice === scissors) {
         gameResult.textContent = "Player Lost! Scissors beats Paper"
+        computerScore += 1
+        cScore.textContent = computerScore
     } else if (playersChoice === scissors && computersChoice === paper) {
         gameResult.textContent = "Player Won! Scissors beats Paper"
+        playerScore += 1
+        pScore.textContent = playerScore
     }
-}
 
+    round += 1
+    roundCount.textContent = round
+}
