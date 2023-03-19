@@ -11,9 +11,6 @@ let computersChoice = ""
 let gameResult = document.getElementById("game-result")
 let pChoice = document.getElementById("p-choice")
 let cChoice = document.getElementById("c-choice")
-// variables that keep track of the winner
-let cWinner = 1
-let pWinner = 1
 // function that gathers the input of players choice
 function Rock() {
     playersChoice = rock
@@ -54,6 +51,9 @@ let cScore = document.getElementById("c-score")
 let playerScore = 0
 let computerScore = 0
 let round = 0
+// variables to keep track of the winner
+let cWinner = false
+let pWinner = false
 // function that displays the round, score and compares the choices
 function playRound() {
     if (playersChoice === computersChoice) {
@@ -90,4 +90,36 @@ function playRound() {
 
     round += 1
     roundCount.textContent = round
+    winner()
+}
+
+function winner() {
+    if (computerScore === 5) {
+        cWinner = true
+    } else if (playerScore === 5) {
+        pWinner = true
+    }
+    gameEnd()
+}
+
+function gameEnd() {
+    if (pWinner === true) {
+        playerScore = 0
+        computerScore = 0
+        round = 0
+
+        roundCount.textContent = round
+        pScore.textContent = playerScore
+        cScore.textContent = computerScore
+        alert("Player won! You reached 5 point first!")
+    } else if (cWinner === true) {
+        playerScore = 0
+        computerScore = 0
+        round = 0
+
+        roundCount.textContent = round
+        pScore.textContent = playerScore
+        cScore.textContent = computerScore
+        alert("Computer won! He reached 5 points first! But be sure to get him next time!")
+    }
 }
