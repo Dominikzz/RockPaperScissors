@@ -12,21 +12,21 @@ let gameResult = document.getElementById("game-result")
 let pChoice = document.getElementById("p-choice")
 let cChoice = document.getElementById("c-choice")
 // function that gathers the input of players choice
-function Rock() {
-    playersChoice = rock
-    pChoice.textContent = "Your Choice: " + rock
+
+function playerSelection (e) {
+    const playersPick = e.target.value
+    playersChoice = playersPick
+    pChoice.textContent = "Your Choice: " + playersPick
     Random()
 }
-function Paper() {
-    playersChoice = paper
-    pChoice.textContent = "Your Choice: " + paper
-    Random()
-}
-function Scissors() {
-    playersChoice = scissors
-    pChoice.textContent = "Your Choice: " + scissors
-    Random()
-}
+
+const key = document.querySelector(".key");
+const key1 = document.querySelector(".key1");
+const key2 = document.querySelector(".key2");
+key.addEventListener("click", playerSelection);
+key1.addEventListener("click", playerSelection);
+key2.addEventListener("click", playerSelection);
+
 // function that generates a random computer choice
 function Random() {
     let compChoice = Math.floor(Math.random() * 3) + 1
@@ -88,6 +88,8 @@ function playRound() {
         pScore.textContent = playerScore
     }
 
+    console.log(playerScore, computerScore);
+
     round += 1
     roundCount.textContent = round
     winner()
@@ -112,6 +114,7 @@ function gameEnd() {
         pScore.textContent = playerScore
         cScore.textContent = computerScore
         alert("Player won! You reached 5 point first!")
+        pWinner = false
     } else if (cWinner === true) {
         playerScore = 0
         computerScore = 0
@@ -121,5 +124,6 @@ function gameEnd() {
         pScore.textContent = playerScore
         cScore.textContent = computerScore
         alert("Computer won! He reached 5 points first! But be sure to get him next time!")
-    }
+        cWinner = false
+    } 
 }
